@@ -1,0 +1,13 @@
+name: kafka-learning
+
+services:
+  kafka:
+    image: apache/kafka:4.0.2
+    ports:
+      - "127.0.0.1:9092:9092"
+    healthcheck:
+      test: ["CMD", "/opt/kafka/bin/kafka-topics.sh", "--bootstrap-server", "localhost:9092", "--list"]
+      interval: 10s
+      timeout: 10s
+      retries: 8
+      start_period: 30s
